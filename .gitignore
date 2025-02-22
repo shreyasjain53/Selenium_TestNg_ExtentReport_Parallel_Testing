@@ -1,0 +1,20 @@
+# Ignore compiled Java files
+*.class
+
+# Ignore build directories
+target/
+bin/
+out/
+
+
+# Ignore Eclipse and IntelliJ project files
+.settings/
+*.project
+*.classpath
+.idea/
+*.iml
+
+
+# Ignore test reports
+test-output/
+surefire-reports/
