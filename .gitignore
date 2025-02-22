@@ -13,6 +13,7 @@ out/
 *.classpath
 .idea/
 *.iml
+.vscode/
 
 
 # Ignore test reports
