@@ -1,6 +1,5 @@
 package reports;
 
-import java.io.PrintStream;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;

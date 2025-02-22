@@ -1,6 +1,5 @@
 package reports;
 
-import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
 
 
@@ -13,7 +12,6 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import static reports.ConsoleToExtent.logToExtent;
 
 public class ExtentReport extends Base implements ITestListener {
 	

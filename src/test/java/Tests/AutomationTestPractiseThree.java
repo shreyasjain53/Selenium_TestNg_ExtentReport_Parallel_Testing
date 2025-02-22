@@ -1,8 +1,5 @@
 package Tests;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.Alert;
@@ -15,7 +12,6 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Base.Base;
-import commonFunctions.JSECommonFunction;
 import commonFunctions.commonFunctions;
 import reports.Log;
 
