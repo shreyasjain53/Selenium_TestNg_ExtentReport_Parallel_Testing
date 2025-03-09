@@ -71,45 +71,25 @@ public class Base {
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
-	public void folderCreation() {
-		String	path = System.getProperty("user.dir") + "/reports";
-
+		public void folderCreation() {
+		String path = System.getProperty("user.dir") + "/reports";
+	
 		File file = new File(path);
-		if (!file.exists()) {
-			file.mkdir();
-			System.out.println("Folder created successfully at: " + file.getAbsolutePath());
+		try {
+			if (!file.exists()) {
+				if (file.mkdir()) {
+					System.out.println("Folder created successfully at: " + file.getAbsolutePath());
+				} else {
+					System.out.println("Failed to create folder at: " + file.getAbsolutePath());
+				}
+			} else {
+				System.out.println("Folder already exists at: " + file.getAbsolutePath());
+			}
+		} catch (SecurityException e) {
+			System.err.println("Permission denied: Unable to create folder at " + file.getAbsolutePath());
+			e.printStackTrace();
 		}
 	}
-	
-	
-	
-//	public void takeScreenShot(String path) {
-//	    // Get the screenshot as a file
-//	    TakesScreenshot tc = (TakesScreenshot) driver.get();
-//	    File screenshot = tc.getScreenshotAs(OutputType.FILE);
-//	    
-//	    // Generate a unique file name with timestamp
-////	    String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-//	    String screenshotName = "screenshot.png";
-//	    
-//	    // Specify the directory where the screenshot will be saved
-//	    String screenshotDirectory = System.getProperty("user.dir") +"/reports/"+ path+"/screenshots";
-//	    File directory = new File(screenshotDirectory);
-//	    if (!directory.exists()) {
-//	        directory.mkdir(); // Create the directory if it doesn't exist
-//	    }
-//	    
-//	    // Save the screenshot to the specified directory
-//	    File destinationFile = new File(screenshotDirectory + "/" + screenshotName);
-//	    try {
-//	        FileUtils.copyFile(screenshot, destinationFile);
-//	        System.out.println("Screenshot saved at: " + destinationFile.getAbsolutePath());
-//	    } catch (IOException e) {
-//	        e.printStackTrace();
-//	        System.err.println("Failed to save screenshot: " + e.getMessage());
-//	    }
-//	}
-	
 	
 	public String getScreenShotPath(String testCaseName, WebDriver driver) {
 
