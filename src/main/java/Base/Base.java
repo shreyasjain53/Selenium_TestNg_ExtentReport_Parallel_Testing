@@ -70,8 +70,8 @@ public class Base {
 		WebDriverWait wait = new WebDriverWait(driver(), Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	
-		public void folderCreation() {
+
+	public void folderCreation() {
 		String path = System.getProperty("user.dir") + "/reports";
 	
 		File file = new File(path);
