@@ -19,3 +19,4 @@ out/
 # Ignore test reports
 test-output/
 surefire-reports/
+reports/
