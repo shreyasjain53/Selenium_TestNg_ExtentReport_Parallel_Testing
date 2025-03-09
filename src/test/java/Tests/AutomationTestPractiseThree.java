@@ -1,5 +1,7 @@
 package Tests;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -137,31 +139,51 @@ public class AutomationTestPractiseThree extends Base {
 
 		newTabClick.click();
 
-		Set<String> tabs = driver().getWindowHandles();
+		String currentTabTitle = commonFunctions.switchToTabByTitleName("Your Store");
 
-		Log.INFO(tabs.toString());
+		Assert.assertEquals(currentTabTitle, "Your Store");
 
-		String currentActiveWindow = driver().getWindowHandle();
+	}
 
-		for (String string : tabs) {
+	@Test
+	public void popupWindows() {
+		WebElement popup = driver().findElement(By.xpath("//button[@id='PopUp']"));
 
-			if (!currentActiveWindow.equals(string)) {
-				driver().switchTo().window(string);
-				
-			}
+		popup.click();
+		// popup.click();
+		driver().get("https://www.facebook.com/");
 
-			if (driver().getTitle().equalsIgnoreCase("Your Store")) {
-				Log.INFO("You are inside :"+ driver().getTitle());
-				break;
-			}
-		}
+		Assert.assertEquals(driver().getTitle(), "Facebook – log in or sign up");
 
-		Assert.assertEquals(driver().getTitle(), "Your Store");
+		commonFunctions.switchToTabByTitleName("Selenium");
 
-		driver().switchTo().window(currentActiveWindow);
+		driver().get("https://www.instagram.com/");
+		Assert.assertEquals(driver().getTitle(), "Instagram");
+
+		commonFunctions.switchToTabByTitleName("Facebook – log in or sign up");
+
+		driver().get("https://testautomationpractice.blogspot.com/");
 
 		Assert.assertEquals(driver().getTitle(), "Automation Testing Practice");
-
-		Log.INFO("You are inside :"+ driver().getTitle());
 	}
+
+	@Test
+	public void mouseHover() {
+		WebElement pointMe = driver().findElement(By.xpath("//button[normalize-space()='Point Me']"));
+
+		commonFunctions.moveToElement(pointMe);
+
+		List<WebElement> itemList = driver().findElements(By.xpath("//div[@class='dropdown-content']/a"));
+
+		List<String> arr = Arrays.asList("Mobiles", "Laptops");
+
+		List<String> actualArr = new ArrayList<>();
+
+		for (WebElement item : itemList) {
+			actualArr.add(item.getText());
+		}
+
+		Assert.assertEquals(actualArr, arr);
+	}
+
 }
